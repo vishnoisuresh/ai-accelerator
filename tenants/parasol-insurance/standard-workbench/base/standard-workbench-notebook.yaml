@@ -67,10 +67,6 @@ spec:
               name: standard-workbench
             - mountPath: /dev/shm
               name: shm
-            - mountPath: /etc/pki/tls/custom-certs/ca-bundle.crt
-              name: trusted-ca
-              readOnly: true
-              subPath: ca-bundle.crt
             - mountPath: /etc/oauth/config
               name: oauth-config
             - mountPath: /etc/tls/private
@@ -88,13 +84,6 @@ spec:
         - emptyDir:
             medium: Memory
           name: shm
-        - configMap:
-            items:
-              - key: ca-bundle.crt
-                path: ca-bundle.crt
-            name: workbench-trusted-ca-bundle
-            optional: true
-          name: trusted-ca
         - name: oauth-config
           secret:
             defaultMode: 420
